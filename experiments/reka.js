@@ -132,42 +132,42 @@ window.addEventListener("load", () => {
 
   // Load multiple soundtracks into the soundPlayers array
   let soundFiles = [
-    // "sounds/cow.mp3",
-    // "sounds/applause.mp3",
-    // "sounds/breaking-news.mp3",
-    // "sounds/cellphone-ringtone.mp3",
-    // "sounds/cinema-logo.mp3",
-    // "sounds/cinema-projector.mp3",
-    // "sounds/dial.mp3",
-    // "sounds/game-over.mp3",
-    // "sounds/game-start.mp3",
-    // "sounds/keyboard.mp3",
-    // "sounds/like.mp3",
-    // "sounds/mouse-click.mp3",
-    // "sounds/pac-man.mp3",
-    // "sounds/photo.mp3",
-    // "sounds/podcast.mp3",
-    // "sounds/printer.mp3",
-    // "sounds/radio-report.mp3",
-    // "sounds/sport-theme.mp3",
-    // "sounds/subscribe.mp3",
-    // "sounds/tv-sport.mp3",
-    "assets/typewritter.mp3",
+     "sounds/cow.mp3",
+     "sounds/applause.mp3",
+     "sounds/breaking-news.mp3",
+     "sounds/cellphone-ringtone.mp3",
+     "sounds/cinema-logo.mp3",
+     "sounds/cinema-projector.mp3",
+     "sounds/dial.mp3",
+     "sounds/game-over.mp3",
+     "sounds/game-start.mp3",
+     "sounds/keyboard.mp3",
+     "sounds/like.mp3",
+     "sounds/mouse-click.mp3",
+     "sounds/pac-man.mp3",
+     "sounds/photo.mp3",
+     "sounds/podcast.mp3",
+     "sounds/printer.mp3",
+     "sounds/radio-report.mp3",
+     "sounds/sport-theme.mp3",
+     "sounds/subscribe.mp3",
+     "sounds/tv-sport.mp3",
+     "assets/typewritter.mp3",
   ];
   soundFiles.forEach((file) => {
     let player = new Tone.Player(file).toDestination();
     soundPlayers.push(player); // Add each player to the array
   });
 
-  analyser = new Tone.Analyser("waveform", 256); // Waveform for amplitude analysis
-  mic.connect(analyser); // Connect the microphone to the analyzer
+  analyser = new Tone.Analyser("waveform", 256); 
+  mic.connect(analyser); 
 });
 
 window.addEventListener("click", async () => {
-  await Tone.start(); // Start the Tone.js context
+  await Tone.start(); 
   console.log("Audio context started");
 
-  // Open the microphone
+  
   mic
     .open()
     .then(() => {
@@ -178,17 +178,17 @@ window.addEventListener("click", async () => {
     });
 });
 
-// Snowflake class with random RGB color
+
 class Snowflake {
   constructor() {
-    this.x = random(width); // Random horizontal position
+    this.x = random(width); 
     this.y = random(-height, 0); // Start above the screen
-    this.size = random(5, 10); // Random size for each snowflake
-    this.xVelocity = 0; // Initial horizontal velocity
-    this.maxXVelocity = 5; // Maximum xVelocity for movement
-    this.r = random(255); // Random red color value
-    this.g = random(255); // Random green color value
-    this.b = random(255); // Random blue color value
+    this.size = random(5, 10); 
+    this.xVelocity = 0; 
+    this.maxXVelocity = 5; 
+    this.r = random(255); 
+    this.g = random(255); 
+    this.b = random(255); 
   }
 
   // Update the position of the snowflake
@@ -209,20 +209,20 @@ class Snowflake {
     }
   }
 
-  // Draw the snowflake with random color
+  
   display() {
-    noStroke(); // No border for the snowflakes
-    fill(this.r, this.g, this.b); // Use random RGB color
-    this.drawSnowflake(this.x, this.y, this.size); // Draw the snowflake
+    noStroke(); 
+    fill(this.r, this.g, this.b); 
+    this.drawSnowflake(this.x, this.y, this.size); 
   }
 
   // Draw a circle (snowflake)
   drawSnowflake(x, y, size) {
-    ellipse(x, y, size, size); // Draw a circle for each snowflake
+    ellipse(x, y, size, size); 
   }
 }
 
-// p5.js setup function
+
 function setup() {
   createCanvas(innerWidth, innerHeight);
   background(0);
@@ -239,17 +239,17 @@ function setup() {
   }
 }
 
-// p5.js draw function
+
 function draw() {
-  background(0); // Black background
+  background(0); 
 
   // Draw extended snowy ground
   fill(139, 69, 19);
-  rect(0, height - 200, width, 200); // White ground, 200px high (under the cameras)
+  rect(0, height - 200, width, 200); 
 
   // Draw cameras
   for (let camera of cameras) {
-    camera.display(); // Display each camera
+    camera.display(); 
   }
 
   // Handle sound input and snowflakes
@@ -288,53 +288,52 @@ function draw() {
   }
 }
 
-// Camera class (with two diagonal stands and black border)
-// Camera class (with two diagonal stands and black border)
+
 // Camera class (with two diagonal stands and black border)
 class Camera {
   constructor() {
-    this.x = random(width); // Random horizontal position
-    this.y = height - 300; // Ground level for cameras (adjusted for higher ground)
-    this.bodyWidth = random(50, 100); // Random size for the camera body width
-    this.bodyHeight = this.bodyWidth / 2; // Camera body height is proportional to width
-    this.lensSize = this.bodyHeight / 1.5; // Lens size proportional to body height
-    this.legLength = 150; // Length of the diagonal legs
-    this.legAngle = PI / 3; // Angle for the diagonal legs (approximately 60 degrees)
+    this.x = random(width); 
+    this.y = height - 300; 
+    this.bodyWidth = random(50, 100); 
+    this.bodyHeight = this.bodyWidth / 2; 
+    this.lensSize = this.bodyHeight / 1.5; 
+    this.legLength = 150; 
+    this.legAngle = PI / 3; 
 
     // Adjust leg positions to be closer together
-    this.legOffset = this.bodyWidth / 4; // Decrease this value to bring the legs closer
+    this.legOffset = this.bodyWidth / 4; 
   }
 
   // Draw the camera with two diagonal stands
   display() {
     // Draw the camera body
-    fill(105, 105, 105); // Darker grey for the camera body
-    rect(this.x, this.y - this.bodyHeight, this.bodyWidth, this.bodyHeight); // Camera body
+    fill(105, 105, 105); 
+    rect(this.x, this.y - this.bodyHeight, this.bodyWidth, this.bodyHeight); 
 
     // Draw the lens
-    fill(0, 0, 255); // Blue lens
+    fill(0, 0, 255); 
     ellipse(
       this.x + this.bodyWidth / 2,
       this.y - this.bodyHeight / 2,
       this.lensSize,
       this.lensSize
-    ); // Camera lens
+    ); 
 
     // Draw the small yellow circle at the top right corner of the camera body
-    fill(255, 255, 0); // Set color to yellow
-    const circleSize = 10; // Diameter of the circle
-    const circleX = this.x + this.bodyWidth - circleSize / 2; // Position the circle towards the right inside the camera body
-    const circleY = this.y - this.bodyHeight + circleSize / 2; // Position the circle towards the top inside the camera body
-    ellipse(circleX, circleY, circleSize, circleSize); // Draw small yellow circle
+    fill(255, 255, 0); 
+    const circleSize = 10; 
+    const circleX = this.x + this.bodyWidth - circleSize / 2; 
+    const circleY = this.y - this.bodyHeight + circleSize / 2; 
+    ellipse(circleX, circleY, circleSize, circleSize); 
 
     // Draw the legs
     stroke(105, 105, 105);
     strokeWeight(5);
 
     // Draw two diagonal stands (as legs)
-    let legX1 = this.x + this.legOffset; // Start position for left leg (offset)
-    let legX2 = this.x + this.bodyWidth - this.legOffset; // Start position for right leg (offset)
-    let legY = this.y; // Bottom of the camera body
+    let legX1 = this.x + this.legOffset; 
+    let legX2 = this.x + this.bodyWidth - this.legOffset; 
+    let legY = this.y; 
 
     // Draw the left diagonal leg
     line(
@@ -354,8 +353,8 @@ class Camera {
     // Draw the border around the camera body for a 3D look
     noFill();
     strokeWeight(2);
-    stroke(0); // Black border
-    rect(this.x, this.y - this.bodyHeight, this.bodyWidth, this.bodyHeight); // Border for camera body
+    stroke(0); 
+    rect(this.x, this.y - this.bodyHeight, this.bodyWidth, this.bodyHeight); 
   }
 }
 
@@ -368,7 +367,7 @@ function playRandomSound(voiceStrength) {
     } while (randomIndex === lastSoundIndex); // Ensure it's not the same as the last one
 
     soundPlayers[randomIndex].start(); // Start playing the selected sound
-    lastSoundIndex = randomIndex; // Update the last sound index
+    lastSoundIndex = randomIndex; 
     windPlaying = true; // Set flag to true to prevent multiple starts
 
     // Select a random word and calculate direction based on its length
