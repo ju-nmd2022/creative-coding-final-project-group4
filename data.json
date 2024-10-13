@@ -1,18 +1,17 @@
 [
   {
-    "file": "experiments/reka.js",
-    "name": "Shades Of Purple",
-    "description": "This animation was created based on Lines."
+    "file": "experiments/polina.js",
+    "name": "Neon Craziness",
+    "description": "Neon Craziness was created based on Colourful Dots. By allowing looping and experimenting with bold colours, a new artwork has been created, not at all giving the same feel as default version. "
   },
   {
     "file": "experiments/kate.js",
     "name": "Colourful Dots",
     "description": "This work is a recreation of QQL (2022) by Tyler Hobbs. It is my first generative art. I started with creating one circle, then adding it into a grid, and at the end, adjusting colors and randomness. I decided to change the colors to give the artwork a bit different feel than the original artwork."
   },
-
   {
-    "file": "experiments/polina.js",
-    "name": "Neon Craziness",
-    "description": "Neon Craziness was created based on Colourful Dots. By allowing looping and experimenting with bold colours, a new artwork has been created, not at all giving the same feel as default version. "
+    "file": "experiments/reka.js",
+    "name": "Shades Of Purple",
+    "description": "This animation was created based on Lines."
   }
 ]

@@ -345,7 +345,8 @@ function meterRandom() {
   shapes.forEach((shape, index) => {
     // Create a unique speed for each shape based on the index
     const baseSpeed = map(result, -60, 0, 1, 10);
-    shape.speed = constrain(shape.speed, 1, 90); // make sure that the speed isnt too big - range of 1-90
+    shape.speed = baseSpeed;
+    // shape.speed = constrain(shape.speed, 1, 200); // make sure that the speed isnt too big - range of 1-90
   });
 }
 
@@ -386,7 +387,7 @@ function analyserRandom() {
       result = averageFrequency; // this is here for a case of error
   }
 
-  //frequency efect the size of the shapes
+  // frequency efect the size of the shapes
   // shapes.forEach((shape, index) => {
   //   // Calculate a unique size for each shape based on the result
   //   const baseSize = map(result, -100, 1000, 10, 100); // Map result to a size range
@@ -396,7 +397,8 @@ function analyserRandom() {
 
   shapes.forEach((shape) => {
     const mappedSize = map(result, -100, 1000, 10, 100);
-    shape.size = constrain(mappedSize, 5, 12); // Range not to make the user go super dizzy
+    shape.size = mappedSize;
+    shape.size = constrain(mappedSize, 5, 12); // Range not to make the user go super dizzy - 5-12
   });
 }
 function draw() {
