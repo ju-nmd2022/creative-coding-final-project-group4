@@ -112,6 +112,20 @@ const words = [
   "Targeted advertising",
 ];
 
+window.addEventListener("click", async () => {
+  await Tone.start();
+  console.log("Audio context started");
+
+  mic
+    .open()
+    .then(() => {
+      console.log("Microphone is open");
+    })
+    .catch((e) => {
+      console.error("Mic access denied", e);
+    });
+});
+
 function setup() {
   createCanvas(1500, 900);
   gap = Math.random() * (10 - 0) + 0;

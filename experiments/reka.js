@@ -163,6 +163,7 @@ window.addEventListener("load", () => {
   mic.connect(analyser); 
 });
 
+
 window.addEventListener("click", async () => {
   await Tone.start(); 
   console.log("Audio context started");
@@ -177,7 +178,6 @@ window.addEventListener("click", async () => {
       console.error("Mic access denied", e);
     });
 });
-
 
 class Snowflake {
   constructor() {
