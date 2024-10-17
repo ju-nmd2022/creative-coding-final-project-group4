@@ -1,6 +1,5 @@
+//This code (and the whole structure) was created with Garrit's code, chatGPT and our own adjustments
 const p5container = document.getElementById("p5container");
-
-let currentExperiment = 0;
 let experiments = [];
 
 fetch("data.json")
@@ -8,20 +7,22 @@ fetch("data.json")
   .then((data) => {
     experiments = data;
     if (experiments.length > 0) {
-      goToExperiment(0);
-      // Start automatic switching of experiments every 10 seconds
-      setInterval(() => {
-        currentExperiment++;
-        if (currentExperiment >= experiments.length) {
-          currentExperiment = 0;
-        }
-        goToExperiment(currentExperiment);
-      }, 10000); // 10000 milliseconds = 10 seconds
+      fetchExperiment();
     }
-  });
+  })
+  .catch((error) => console.error("Error fetching experiments:", error));
 
-function goToExperiment(index) {
-  const experiment = experiments[index];
+function fetchExperiment() {
+  const randomIndex = Math.floor(Math.random() * experiments.length);
+  const currentExperiment = experiments[randomIndex]; // random file
+  goToExperiment(currentExperiment);
+
+  // random interval
+  const randomInterval = Math.floor(Math.random() * (20000 - 5000 + 1)) + 5000;
+  setTimeout(fetchExperiment, randomInterval);
+}
+
+function goToExperiment(experiment) {
   if (!experiment) {
     return;
   }
